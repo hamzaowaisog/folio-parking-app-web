@@ -1,0 +1,13 @@
+"use client";
+
+// S-3 Dashboard (/dashboard): the approved Stitch page, built by the coding task in this file.
+// Rebuild the approved Stitch screen here with the kit's components (components/ui, components/blocks) and the theme;
+// match its layout, sections and words. Fixture mode (?fixture=S-3:<state>) must show the approved sample content in
+// that state with no backend; the states the design drew: After a claim: the big card becomes 'You have a space on Floor 3' with a floor line-icon showing a '3', the plate badge 'AWC-917', and the line 'Park anywhere on Floor 3. You don't get a numbered bay.' No cancel control and no Claim button., Holder, space released: badge 'Released', the line 'Your space is free for colleagues today', and the Release button is gone, Holder, space claimed: badge 'Claimed', the line 'Another employee is parked in your space today', no button, Release refused: the returned reason in a plain message above the card, button kept, Claim refused: a message in place of success, 'No space could be claimed. The last free space was taken just now.' with the count refreshed; no success shown, Some profile details unavailable: a notice 'We couldn't load your assigned floor.' with a 'Retry' button; the release button is disabled and the rest of the page works, Loading: skeleton blocks in the card shapes, Error: 'We couldn't load your parking. Try again.' with a 'Retry' button, Employee without dedicated parking (Bilal Ahmed), normal layout: heading 'Dashboard' with the date 'Tuesday 14 October'. The first thing is a very large card taking two thirds of the width: left a real photograph of a car park level with empty painted bays, right the count '5' in huge tabular figures with 'Parking spots available' beside it, one line 'Floor 1: 2 · Floor 3: 3', and the one primary button 'Claim a space'. Beneath it a quiet line 'Not yet claimable: 2 on Floor 2, from 09:30 on Wed 15 Oct'. In the right third a car picture card: real photograph of a grey Toyota Corolla with the plate badge 'AWC-917' and a second row 'Blue Suzuki Alto · LEB-554', plus a text button 'Add your vehicle'. An availability toast sits at the top right of the content as its own solid block with a car line-icon: 'Parking is free today. 5 spots on Floors 1 and 3.' and below it 'Alerts go to bilal.ahmed@folio3.com'. This toast is the in-app form of a push notice; the same alert is emailed., Sheet: Choose your car, Dialog: Add your vehicle.
+export function DashboardContainer({ fixture }: { fixture?: string }) {
+  return (
+    <main data-screen="S-3" data-state={fixture ?? "default"}>
+      <h1>Dashboard</h1>
+    </main>
+  );
+}
