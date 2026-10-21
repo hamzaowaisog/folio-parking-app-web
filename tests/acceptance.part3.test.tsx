@@ -23,6 +23,13 @@ import { EntryRecordsContainer } from "@/components/screens/s-8/container";
 import { ReportsContainer } from "@/components/screens/s-9/container";
 import { at } from "./support/screen";
 
+// every page here needs a signed-in person: without a token it sends them to /sign-in and shows nothing
+vi.mock("@/lib/auth/session", () => ({
+  getAccessToken: () => "test-access-token",
+  storeAccessToken: vi.fn(),
+  clearAccessToken: vi.fn(),
+}));
+
 const server = setupServer(...getFolio3ParkingAPIMock());
 
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
@@ -60,8 +67,16 @@ describe("parking claim and availability", () => {
 
     const user = userEvent.setup();
     render(<FreeSpacesContainer />);
-    const claimButton = screen.queryByRole("button", { name: "Claim a space" });
-    if (claimButton) await user.click(claimButton);
+    await user.click(await screen.findByRole("button", { name: "Claim a space" }));
+    const selector = screen.getByRole("combobox");
+    if (selector instanceof HTMLSelectElement) {
+      await user.selectOptions(selector, selector.options[selector.options.length - 1]!.value);
+    } else {
+      await user.click(selector);
+      await user.click((await screen.findAllByRole("option"))[0]!);
+    }
+    const claimButtons = screen.getAllByRole("button", { name: /claim/i });
+    await user.click(claimButtons[claimButtons.length - 1]!);
 
     expect(await screen.findByText("No space could be claimed. The last free space was taken just now.")).toBeVisible();
     expect(screen.queryByText("You have a space on Floor 3")).not.toBeInTheDocument();

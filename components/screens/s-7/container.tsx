@@ -136,9 +136,10 @@ export function GateTue14OctLiveContainer({ fixture }: { fixture?: string }) {
   }, [isFixture, loadFeed]);
 
   const unavailableEvent = sampleVerification(9100, "KDR-418", "Not registered", "Now", "Denied", "Denied", "off", unavailableMessage);
-  const currentEvent = feed?.events[0] ?? (verificationUnavailable ? unavailableEvent : null);
-  const waiting = !currentEvent && !pageError && !loading;
   const unavailable = verificationUnavailable || pageError === unavailableMessage || feed?.cameraStatus === "unavailable";
+  // while the camera is unavailable an earlier event is stale: its green light must not show as if it were live (review R-3)
+  const currentEvent = unavailable ? unavailableEvent : feed?.events[0] ?? null;
+  const waiting = !currentEvent && !pageError && !loading;
 
   function retry() {
     if (isFixture) return;
@@ -148,33 +149,15 @@ export function GateTue14OctLiveContainer({ fixture }: { fixture?: string }) {
 
   return (
     <>
-      <header className="border-b bg-card">
-        <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
-          <Link to="/gate" className="flex items-center gap-2 font-heading font-semibold text-foreground">
-            <span className="flex size-8 items-center justify-center rounded-md bg-primary text-sm text-primary-foreground">F</span>
-            <span>Folio3 Parking</span>
-          </Link>
-          <nav aria-label="Gate navigation" className="hidden items-center sm:flex">
-            <Link to="/gate" aria-current="page" className="rounded-md bg-muted px-3 py-2 text-sm font-medium text-foreground">Gate</Link>
-          </nav>
-          <div className="ms-auto flex items-center gap-4">
-            <div className="hidden items-center gap-3 sm:flex">
-              <span aria-hidden="true" className="flex size-9 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-secondary-foreground">KY</span>
-              <span className="grid text-sm"><span className="font-medium">Kamran Yousuf</span><span className="text-muted-foreground">Gate guard</span></span>
-            </div>
-            <Link to="/sign-in" onClick={() => clearAccessToken()} className="text-sm font-medium text-primary hover:underline">Sign out</Link>
-          </div>
-        </div>
-      </header>
-
       <main data-screen="S-7" data-state={fixture ?? (loading ? "loading" : pageError ? "error" : waiting ? "waiting" : "default")} className="mx-auto w-full max-w-7xl flex-1 px-4 pb-12 pt-8 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <h1 className="flex flex-wrap items-center gap-x-4 gap-y-2 font-heading text-3xl font-semibold tracking-tight">
             Gate
             <span className="inline-flex items-center gap-2 text-base font-normal text-muted-foreground">
-              <span aria-hidden="true" className="size-2 rounded-full bg-success" />Tue 14 Oct · live
+              <span aria-hidden="true" className="size-2 rounded-full bg-success" />{new Date().toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })} · live
             </span>
           </h1>
+          <Link to="/sign-in" onClick={() => clearAccessToken()} className="text-sm font-medium text-primary hover:underline">Sign out</Link>
         </div>
 
         {loading ? <GateSkeleton /> : (

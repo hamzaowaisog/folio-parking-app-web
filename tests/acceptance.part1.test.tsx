@@ -357,7 +357,7 @@ describe("dedicated parking release", () => {
 
     const user = userEvent.setup();
     render(<DashboardContainer />);
-    await user.click(screen.getByRole("button", { name: "Release today's parking" }));
+    await user.click(await screen.findByRole("button", { name: "Release today's parking" }));
 
     expect(await screen.findByText("Your space is free for colleagues today")).toBeTruthy();
     expect(screen.getByText("Released")).toBeTruthy();
@@ -368,7 +368,7 @@ describe("dedicated parking release", () => {
 
   it("AC_7_2_ShowsClaimedStatusWithoutAReleaseOrReclaimControl", async () => {
     sessionState.accessToken = "employee-session-token";
-    const claimed = { ...getReleaseTodaysParkingResponseMock(), status: "Claimed" as const, createdBy: "Another employee" };
+    const claimed = { ...getReleaseTodaysParkingResponseMock(), date: today(), status: "Claimed" as const, createdBy: "Another employee" };
     server.use(getGetParkingDashboardMockHandler(() => dashboardFor("dedicated", [claimed])));
 
     render(<DashboardContainer />);
@@ -392,7 +392,7 @@ describe("dedicated parking release", () => {
 
     const user = userEvent.setup();
     render(<DashboardContainer />);
-    await user.click(screen.getByRole("button", { name: "Release today's parking" }));
+    await user.click(await screen.findByRole("button", { name: "Release today's parking" }));
 
     expect(await screen.findByText(responseConflict.message)).toBeTruthy();
     expect(screen.queryByText("Your space is free for colleagues today")).toBeNull();

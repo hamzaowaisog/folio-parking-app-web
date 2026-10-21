@@ -2,19 +2,21 @@
 // The product's frame (theme.shell): a sidebar app, a top-bar site, a menu button opening a drawer, a bottom tab bar
 // (phone apps) or a minimal frame. A sidebar becomes a drawer on a phone.
 import { Check, ChevronsUpDown, Languages, Menu } from "lucide-react";
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { getAccessToken, getSessionRole } from "@/lib/auth/session";
 import { useLang, useT } from "@/lib/i18n";
 import { Link, useNav } from "@/lib/nav";
 import { hrefFor, matches } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 export type Shell = "sidebar" | "topbar" | "drawer" | "tabs" | "minimal";
-export interface NavItem { label: string; route: string; group?: string }
+/** roles: who sees the item (a session role); an item without roles shows to everyone signed in */
+export interface NavItem { label: string; route: string; group?: string; roles?: string[] }
 export interface Switcher { kind: string; current: string; meta?: string; others: string[] }
 export interface FrameApp { id: string; name: string; shell: Shell; nav: NavItem[]; switcher?: Switcher; routes: string[] }
 
@@ -73,11 +75,15 @@ export function AppFrame({ product, apps, children }: { product: string; apps: F
   const { path } = useNav();
   const app = apps.find((a) => a.routes.some((r) => matches(r, path))) ?? apps[0]!;
   const name = apps.length > 1 ? app.name : product;
+  // read after the first render (the server has no session); signed out shows no pages, a session without a role is an employee's
+  const [session, setSession] = useState<{ role: string } | null>(null);
+  useEffect(() => { setSession(getAccessToken() ? { role: getSessionRole() ?? "employee" } : null); }, [path]);
+  const nav = session ? app.nav.filter((i) => !i.roles || i.roles.includes(session.role)) : [];
   const side = (
     <div className="grid content-start gap-4">
       <Brand name={name} />
       {app.switcher && <SwitcherMenu s={app.switcher} />}
-      <NavList items={app.nav} path={path} vertical />
+      <NavList items={nav} path={path} vertical />
       <div><LangSwitch /></div>
     </div>
   );
@@ -102,7 +108,7 @@ export function AppFrame({ product, apps, children }: { product: string; apps: F
       <header className="flex items-center gap-2 border-b bg-card px-4 py-2"><Brand name={name} /><span className="ms-auto"><LangSwitch /></span></header>
       {children}
       <nav aria-label={t("Main")} className="fixed inset-x-0 bottom-0 z-40 flex border-t bg-card">
-        {app.nav.slice(0, 5).map((i) => {
+        {nav.slice(0, 5).map((i) => {
           const on = matches(i.route, path);
           return <Link key={i.route} to={hrefFor(i.route)} aria-current={on ? "page" : undefined} className={cn("flex-1 py-3 text-center text-xs", on ? "font-medium text-primary" : "text-muted-foreground")}>{t(i.label)}</Link>;
         })}
@@ -115,9 +121,9 @@ export function AppFrame({ product, apps, children }: { product: string; apps: F
   else frame = (
     <div className="flex min-h-dvh flex-col">
       <header className="sticky top-0 z-40 flex items-center gap-4 border-b bg-card px-4 py-2">
-        <span className={app.shell === "drawer" ? "" : "md:hidden"}>{drawer}</span>
+        {nav.length > 0 && <span className={app.shell === "drawer" ? "" : "md:hidden"}>{drawer}</span>}
         <Brand name={name} />
-        {app.shell === "topbar" && <div className="hidden md:block"><NavList items={app.nav} path={path} vertical={false} /></div>}
+        {app.shell === "topbar" && <div className="hidden md:block"><NavList items={nav} path={path} vertical={false} /></div>}
         <span className="ms-auto"><LangSwitch /></span>
         {app.switcher && <div className="hidden w-56 sm:block"><SwitcherMenu s={app.switcher} /></div>}
       </header>

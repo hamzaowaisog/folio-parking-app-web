@@ -209,8 +209,7 @@ export function DashboardContainer({ fixture }: { fixture?: string }) {
   const employee = dashboard?.employee;
   const displayEmployee = unavailableFields.length > 0 && profile ? profile.employee : employee;
   const vehicles = profile?.vehicles ?? [];
-  const todayRelease = dashboard?.releases.find((release) => release.date === dashboard.officeDate)
-    ?? dashboard?.releases.find((release) => release.status !== "Reserved");
+  const todayRelease = dashboard?.releases.find((release) => release.date === dashboard.officeDate);
   const isDedicated = employee?.parkingStatus === "dedicated";
   const currentClaim = dashboard?.currentClaim;
   const hasVehicle = vehicles.length > 0;
@@ -419,6 +418,7 @@ export function DashboardContainer({ fixture }: { fixture?: string }) {
                     <p className="text-xs text-muted-foreground">Frees your space for colleagues today.</p>
                   </div>}
                 </> : <>
+                  <p className="mb-3"><StatusBadge tone="brand">Temporary parking</StatusBadge></p>
                   <p className="mb-2 flex items-end gap-3"><span className="font-heading text-7xl font-semibold leading-none tabular-nums tracking-tight">{dashboard.availability.count}</span><span className="pb-2 text-sm font-medium">Parking spots available</span></p>
                   <div className="mb-5 flex flex-wrap gap-x-2 gap-y-1 text-sm text-muted-foreground">
                     {dashboard.availability.areas.map((area, index) => <span key={area.name}>{index > 0 && <span aria-hidden="true">· </span>}{area.name}: {area.count}</span>)}
@@ -438,7 +438,7 @@ export function DashboardContainer({ fixture }: { fixture?: string }) {
 
           <aside className="grid content-start gap-4 lg:col-span-4">
             {dashboard.notice && <Card className="border-primary bg-primary p-4 text-primary-foreground sm:p-5">
-              <div className="flex gap-3"><CarFront className="mt-0.5 size-5 shrink-0" /><div><p className="font-medium">{dashboard.notice.message}</p><p className="mt-2 text-sm">Alerts go to <span className="font-medium">{dashboard.notice.email}</span></p></div></div>
+              <div className="flex gap-3"><CarFront className="mt-0.5 size-5 shrink-0" /><div><p className="font-medium">{dashboard.notice.message}</p><p className="mt-2 text-sm">Alerts go to {dashboard.notice.email}</p></div></div>
             </Card>}
             <Card className="overflow-hidden">
               <VehicleIllustration vehicle={primaryVehicle} />

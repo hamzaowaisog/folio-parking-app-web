@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { afterAll, afterEach, beforeAll, describe, expect, it, vi, waitFor } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
@@ -24,6 +24,13 @@ import {
   getClaimParkingSpaceMockHandler,
 } from "@/lib/api/client.msw";
 import { at, TEST_NOW } from "./support/screen";
+
+// every page here needs a signed-in person: without a token it sends them to /sign-in and shows nothing
+vi.mock("@/lib/auth/session", () => ({
+  getAccessToken: () => "test-access-token",
+  storeAccessToken: vi.fn(),
+  clearAccessToken: vi.fn(),
+}));
 
 const server = setupServer();
 
@@ -348,10 +355,12 @@ describe("parking release and availability acceptance", () => {
     expect(screen.getByText("Floor 1: 1")).toBeTruthy();
     expect(screen.getByText("Floor 3: 2")).toBeTruthy();
     expect(screen.queryByText("Floor 2: 4")).toBeNull();
-    const scheduledLine = screen.getByText((_, element) => {
+    const isScheduledLine = (element: Element | null): boolean => {
       const text = element?.textContent ?? "";
       return text.includes("Not yet claimable") && text.includes("Floor 2") && text.includes("4") && text.includes("09:30") && text.includes(shortDate(claimableDate));
-    });
+    };
+    // the innermost element holding the line, not every element around it
+    const scheduledLine = screen.getByText((_, element) => isScheduledLine(element) && ![...(element?.children ?? [])].some(isScheduledLine));
     expect(scheduledLine).toBeTruthy();
   });
 

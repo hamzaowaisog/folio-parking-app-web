@@ -3,6 +3,8 @@
 // a page with no router and no browser: navigation is recorded in ./screen, and the few browser parts jsdom lacks are
 // filled in. A plain *.test.ts file is not affected.
 import { afterEach, beforeEach, vi } from "vitest";
+// the DOM matchers screen tests use (toBeVisible, toBeInTheDocument, toHaveTextContent ...)
+import "@testing-library/jest-dom/vitest";
 import { resetNav, TEST_NOW } from "./screen";
 
 // The same instant and time zone on every run and machine. Only Date is faked, and it moves on with real time from TEST_NOW,

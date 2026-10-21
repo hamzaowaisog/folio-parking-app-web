@@ -55,7 +55,7 @@ export function SignInContainer({ fixture }: { fixture?: string }) {
     try {
       const result = await login({ email: email.trim(), password });
       if (result.status === 200) {
-        storeAccessToken(result.data.accessToken, result.data.expiresIn);
+        storeAccessToken(result.data.accessToken, result.data.expiresIn, result.data.employee.role);
         const destination = result.data.employee.role === "gateGuard"
           ? "/gate"
           : result.data.employee.role === "parkingAdministrator"
