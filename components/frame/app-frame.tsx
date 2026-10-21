@@ -18,7 +18,8 @@ export type Shell = "sidebar" | "topbar" | "drawer" | "tabs" | "minimal";
 /** roles: who sees the item (a session role); an item without roles shows to everyone signed in */
 export interface NavItem { label: string; route: string; group?: string; roles?: string[] }
 export interface Switcher { kind: string; current: string; meta?: string; others: string[] }
-export interface FrameApp { id: string; name: string; shell: Shell; nav: NavItem[]; switcher?: Switcher; routes: string[] }
+/** auth: the sign-in and sign-up routes, shown without the frame (the page draws its own brand) */
+export interface FrameApp { id: string; name: string; shell: Shell; nav: NavItem[]; switcher?: Switcher; routes: string[]; auth?: string[] }
 
 function Brand({ name }: { name: string }) {
   return <span className="flex items-center gap-2 font-heading font-semibold"><span className="flex size-7 items-center justify-center rounded-md bg-primary text-sm text-primary-foreground">{name[0]}</span>{name}</span>;
@@ -79,6 +80,8 @@ export function AppFrame({ product, apps, children }: { product: string; apps: F
   const [session, setSession] = useState<{ role: string } | null>(null);
   useEffect(() => { setSession(getAccessToken() ? { role: getSessionRole() ?? "employee" } : null); }, [path]);
   const nav = session ? app.nav.filter((i) => !i.roles || i.roles.includes(session.role)) : [];
+  // signing in or up: no frame and no links, so nothing prefetches a signed-in page while signed out
+  if (app.auth?.some((r) => matches(r, path))) return <TooltipProvider delayDuration={300}>{children}<Toaster /></TooltipProvider>;
   const side = (
     <div className="grid content-start gap-4">
       <Brand name={name} />

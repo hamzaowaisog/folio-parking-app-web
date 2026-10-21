@@ -104,6 +104,10 @@ export const APPS: FrameApp[] = [
       "/admin/employees",
       "/admin/settings",
       "/admin/admins"
+    ],
+    "auth": [
+      "/sign-in",
+      "/sign-up"
     ]
   }
 ];
