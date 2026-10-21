@@ -111,6 +111,15 @@ function RecordsSkeleton() {
   );
 }
 
+// The first and last date among the records shown, as "Mon 13 Oct 2025 – Tue 14 Oct 2025".
+function recordsRange(records: Verification[]): string {
+  const dates = records.map((record) => record.date).sort();
+  if (dates.length === 0) return "";
+  const show = (value: string) => new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })
+    .format(new Date(`${value}T00:00:00Z`)).replace(",", "");
+  return `${show(dates[0])} – ${show(dates[dates.length - 1])}`;
+}
+
 export function EntryRecordsContainer({ fixture }: { fixture?: string }) {
   const isFixture = fixture !== undefined;
   const fixtureLoading = inFixture(fixture, "loading");
@@ -250,7 +259,7 @@ export function EntryRecordsContainer({ fixture }: { fixture?: string }) {
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div aria-label="Date range" className="flex h-11 items-center gap-2.5 rounded-md border bg-card px-3.5 text-sm">
               <CalendarDays aria-hidden="true" className="size-4 text-muted-foreground" />
-              <span>Mon 13 Oct 2025 – Tue 14 Oct 2025</span>
+              <span>{recordsRange(records)}</span>
             </div>
             <Segmented items={filterItems} value={activeFilter} onChange={selectFilter} label="Filter entry records" className="self-start sm:self-auto" />
           </div>
