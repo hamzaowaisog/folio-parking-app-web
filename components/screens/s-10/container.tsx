@@ -19,8 +19,9 @@ import { useNav } from "@/lib/nav";
 
 type CategoryFilter = "All" | ListUnusedParkingCategory;
 
-const defaultDateFrom = "2025-10-06";
-const defaultDateTo = "2025-10-14";
+// The last nine days, ending today.
+const defaultDateTo = toDateValue(new Date())!;
+const defaultDateFrom = toDateValue(new Date(Date.now() - 8 * 86_400_000))!;
 const loadError = "We couldn't load unused spaces. Try again.";
 const accessError = "You do not have access to this page.";
 const filterItems = [

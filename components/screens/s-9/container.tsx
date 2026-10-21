@@ -18,8 +18,9 @@ import { useNav } from "@/lib/nav";
 
 type ReportsByPeriod = Record<GetParkingReportPeriod, Report>;
 
-const defaultDateFrom = "2025-10-06";
-const defaultDateTo = "2025-10-14";
+// The last nine days, ending today.
+const defaultDateTo = toDateValue(new Date())!;
+const defaultDateFrom = toDateValue(new Date(Date.now() - 8 * 86_400_000))!;
 const loadError = "We couldn't load the report. Try again.";
 const accessError = "You do not have access to this page.";
 const periods = ["daily", "weekly"] as const;
@@ -184,7 +185,7 @@ export function ReportsContainer({ fixture }: { fixture?: string }) {
   const [loading, setLoading] = useState(!isFixture || fixtureLoading);
   const [pageError, setPageError] = useState(fixtureError ? loadError : "");
   const [accessRefused, setAccessRefused] = useState("");
-  const [exportMessage, setExportMessage] = useState(inFixture(fixture, "export-done") ? "report-6-14-oct-2025.csv downloaded" : "");
+  const [exportMessage, setExportMessage] = useState(inFixture(fixture, "export-done") ? `report-${defaultDateFrom}-to-${defaultDateTo}.csv downloaded` : "");
   const [fixtureResolved, setFixtureResolved] = useState(false);
   const [retrying, setRetrying] = useState(false);
   const requestId = useRef(0);
@@ -312,7 +313,7 @@ export function ReportsContainer({ fixture }: { fixture?: string }) {
 
   function exportCsv() {
     if (!currentReport) return;
-    const filename = "report-6-14-oct-2025.csv";
+    const filename = `report-${dateFrom}-to-${dateTo}.csv`;
     const lines = [
       ["Date", "Spaces released", "Temporary claims", "Utilization", "Week"],
       ...currentRows.map((row) => [row.date, row.spacesReleased, row.temporaryClaims, row.utilizationPercent, row.week]),
@@ -388,7 +389,7 @@ export function ReportsContainer({ fixture }: { fixture?: string }) {
                   <div className="flex size-36 items-center justify-center rounded-full border-8 border-primary/20 border-t-primary border-r-primary border-b-primary">
                     <span className="font-mono text-2xl font-semibold">{summaryReport ? formatPercent(summaryReport.dailyStatistics.utilizationPercent) : "—"}</span>
                   </div>
-                  <div className="mt-3 text-sm font-medium">Utilization today, Tue 14 Oct</div>
+                  <div className="mt-3 text-sm font-medium">Utilization today, {displayDate(toDateValue(new Date())!)}</div>
                   <div className="mt-1 font-mono text-sm text-muted-foreground">{summaryReport?.dailyStatistics.releasedSpaces ?? "—"} spaces released</div>
                 </div>
                 <div className="grid gap-5">
