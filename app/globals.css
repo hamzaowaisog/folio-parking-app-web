@@ -1,3 +1,24 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./design-theme.css";
+
+:root {
+  --app-color-background: var(--background);
+  --app-color-foreground: var(--foreground);
+  --app-color-primary: var(--primary);
+  --app-font-body: var(--font-body);
+  --app-font-heading: var(--font-heading);
+  --app-corner-radius: var(--radius);
+  --app-space-pad: var(--space-pad);
+  --app-space-row: var(--space-row);
+}
+
+@layer base {
+  :where(button, input, select, textarea, [role="button"], [role="menuitem"], [data-slot="button"]) {
+    @apply min-h-11 min-w-11;
+  }
+
+  :where(nav a) {
+    @apply inline-flex min-h-11 min-w-11 items-center;
+  }
+}
