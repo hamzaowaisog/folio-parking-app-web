@@ -1,0 +1,125 @@
+/* ai-factory design 20261021-folio3-parking-app-introductio-4049 v1 (73c567c899bf), approved by Hamza (via web) on 2026-10-21 */
+/* The approved look as a shadcn/ui theme. Written by ai-factory; change the design, not this file. */
+:root {
+  --radius: 10px;
+  --font-body: "IBM Plex Sans","Inter var",Inter,"SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI Variable","Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --font-heading: "Hanken Grotesk","Inter var",Inter,"SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI Variable","Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --font-heading-weight: 680;
+  --font-heading-tracking: -.025em;
+  --space-pad: 18px;
+  --space-row: 52px;
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --ease-spring: cubic-bezier(.34,1.4,.64,1);
+  --background: #f7f9fd;
+  --foreground: #13161b;
+  --card: #ffffff;
+  --card-foreground: #13161b;
+  --popover: #ffffff;
+  --popover-foreground: #13161b;
+  --primary: #2B5FAE;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f4fb;
+  --secondary-foreground: #13161b;
+  --muted: #f0f4fb;
+  --muted-foreground: #686c72;
+  --accent: #f0f4fb;
+  --accent-foreground: #13161b;
+  --destructive: #c92f33;
+  --border: #e2e6ed;
+  --input: #d0d4db;
+  --ring: #2B5FAE;
+  --success: #067e3f;
+  --warning: #976115;
+  --info: #1e71ac;
+  --brand-text: #2B5FAE;
+  --accent-text: #2B5FAE;
+  --text-secondary: #44484d;
+  --chart-1: #2B5FAE;
+  --chart-2: #2B5FAE;
+  --chart-3: #1e71ac;
+  --chart-4: #067e3f;
+  --chart-5: #976115;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #13161b;
+  --sidebar-primary: #2B5FAE;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f0f4fb;
+  --sidebar-accent-foreground: #13161b;
+  --sidebar-border: #e2e6ed;
+  --sidebar-ring: #2B5FAE;
+  --shadow-card: 0 0 #0000;
+  --shadow-raised: 0 2px 4px rgba(16,24,40,.04),0 12px 28px -10px rgba(16,24,40,.14);
+}
+
+@custom-variant dark (&:is(.dark *, [data-theme="dark"] *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-brand-text: var(--brand-text);
+  --color-accent-text: var(--accent-text);
+  --color-text-secondary: var(--text-secondary);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-body);
+  --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
+  --radius-sm: max(0px, calc(var(--radius) - 4px));
+  --radius-md: max(0px, calc(var(--radius) - 2px));
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xs: var(--radius-sm);
+  --radius-2xl: var(--radius-xl);
+  --radius-3xl: var(--radius-xl);
+  --radius-4xl: var(--radius-xl);
+  --spacing-pad: var(--space-pad);
+  --spacing-row: var(--space-row);
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+  --shadow-2xs: var(--shadow-card);
+  --shadow-xs: var(--shadow-card);
+  --shadow-sm: var(--shadow-card);
+  --shadow: var(--shadow-card);
+  --shadow-md: var(--shadow-raised);
+  --shadow-lg: var(--shadow-raised);
+  --shadow-xl: var(--shadow-raised);
+  --shadow-2xl: var(--shadow-raised);
+  --ease-standard: var(--ease);
+  --ease-spring: var(--ease-spring);
+}
+
+@layer base {
+  * { border-color: var(--border); outline-color: color-mix(in srgb, var(--ring) 50%, transparent); }
+  body { background: var(--background); color: var(--foreground); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: var(--font-heading-weight); letter-spacing: var(--font-heading-tracking); }
+}

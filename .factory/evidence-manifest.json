@@ -1,0 +1,356 @@
+{
+  "header": {
+    "kind": "evidence-manifest",
+    "schemaVersion": 1,
+    "runId": "20261021-folio3-parking-app-introductio-4049",
+    "producedBy": {
+      "stage": "deliver"
+    },
+    "inputsHash": "7d10c9589e602a614bdfcec27db43478dc0fe2ba9ef5acf726fe12dff8ab51eb",
+    "createdAt": "2026-10-21T17:14:52.599Z"
+  },
+  "artifacts": [
+    {
+      "kind": "blob",
+      "path": "discover",
+      "sha": "2d53ce937b35d74d419ee5a418fd2c8b3a887b1f94985227e534f4e7c60642e7"
+    },
+    {
+      "kind": "blob",
+      "path": "intake",
+      "sha": "749378c94966bc921111140ba746dcc28fc7d48642ce20c4774cbed86b65a6b9"
+    },
+    {
+      "kind": "blob",
+      "path": "ground",
+      "sha": "da2d63941c81ab51ef9f91276f95bf3a78fc66e11ac747f518479a555311b737"
+    },
+    {
+      "kind": "blob",
+      "path": "clarify",
+      "sha": "c0a5ff07ef6372a8b96f2ae260852ff5369c1339d612df9a6c60342410c42c41"
+    },
+    {
+      "kind": "blob",
+      "path": "clarify-2",
+      "sha": "44b29cef2ab6f8107410dc7b4e1fa3833cfc0c6356fd89282df1c32d67e0e249"
+    },
+    {
+      "kind": "blob",
+      "path": "drafts",
+      "sha": "8f02e91ffac2356e6e4aa70c27dc66f7ca334d8b1d73873dcc106055a5f61f41"
+    },
+    {
+      "kind": "blob",
+      "path": "merge",
+      "sha": "1e333c5481f17634e6e3f8c8e33c90684a45ae649e0236dd94ad77423759c89b"
+    },
+    {
+      "kind": "blob",
+      "path": "specify",
+      "sha": "7436428817111138ce4a8bc609b9a79155b1eccb73d0098ebac79d29a46a8620"
+    },
+    {
+      "kind": "blob",
+      "path": "specify",
+      "sha": "69b6a2323de629d22de26bfe9bd02c8a1bc7d18a1ba18d9b861eee9e5813d2e0"
+    },
+    {
+      "kind": "blob",
+      "path": "design",
+      "sha": "73c567c899bf8001304ea3b00f27bb723ebc0a234bf73a4829acf4175ff3a00f"
+    },
+    {
+      "kind": "blob",
+      "path": "design-baseline",
+      "sha": "37cbacd6a4f0b885a5cb5c454499b3c0b8c6cd5e6613cae165c0d1282a8fcee8"
+    },
+    {
+      "kind": "blob",
+      "path": "design-export",
+      "sha": "3552547aaf8f5e4fac176803f97601207310ae652733cb4c2f3af64e6284a02c"
+    },
+    {
+      "kind": "blob",
+      "path": "plan",
+      "sha": "a2d041f6adfa1d9497ec2ee212ef81a9faaf2d02833f385ae6bd85910e36501d"
+    },
+    {
+      "kind": "blob",
+      "path": "approve",
+      "sha": "1b0a75c3e00de6d01028c9df0ba0211e1d309f573800990acffdfc49ba32a927"
+    },
+    {
+      "kind": "blob",
+      "path": "stub-commit",
+      "sha": "a338a6769df5a1988ddc7cfccf8ac01bf769d3abe48fd340358f3964f1c46007"
+    },
+    {
+      "kind": "blob",
+      "path": "stub-commit",
+      "sha": "40bb2def20d9c1cd8af27f8103c2b8fc3ba9050be4d309a4623bf90206ab495b"
+    },
+    {
+      "kind": "blob",
+      "path": "author-tests",
+      "sha": "ae47cd62c7887fca4e6a671490b749ec2f9198b46190638cce574514f470adcd"
+    },
+    {
+      "kind": "blob",
+      "path": "author-tests",
+      "sha": "af89c2bfbab7abf9e9c48ce84cef90a2662fee2c89df51c55886d6faed3c413b"
+    },
+    {
+      "kind": "blob",
+      "path": "author-tests",
+      "sha": "f67e83a22395a30d8f661ed1ced64d008fdd15af2ad69b867ed39f9532375ea5"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-1",
+      "sha": "e1ee6a0ab116818fa906eaa55ba25cff25557a77a898f05ca796a2953305aa4c"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-1",
+      "sha": "c8541f98b2d4389a81f0c76410d329822b6c372c0f780fe68af93ce089b13577"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-2",
+      "sha": "c293b19d4d011381aaf4b9b8000dbea991808b826e2c14835e2a315a92eb538e"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-2",
+      "sha": "d739f099fe5ce04dfe2584bbc640c60d1f0d6381ba0b5a14e366b435f5ff761f"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-3",
+      "sha": "f046498e1a76e39c02049aae085232a8aaaf2bcf3b24b055186bcf82eee11116"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-3",
+      "sha": "e88178c2b582abc77224368ebacfb1c793e83e27727e7fab3e3fca1990986bc4"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-4",
+      "sha": "3874c712400e7b2d59b25f6b646db078bf8dd9e4069c5bf744f873ef49b4dfc4"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-4",
+      "sha": "fe6af90b3aad96d42965e7f51b41e332f83609a3fb946c4fba71d9962794df9c"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-5",
+      "sha": "4956abd2e1853f4d251e386b9ed6b88609a0760e0830ac4eaaf0050c9bb4def1"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-5",
+      "sha": "89c87c2437cd42a0ae569c7fe03eb84b5fd4c504a57770826884a969fcba747e"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-6",
+      "sha": "816a8bff223219078c39c6ab773fa91b60282bd7b11390df1fa2d3103cf8ba0b"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-6",
+      "sha": "6e1e8a42918ad1fcdd1725769ed7113423683a8625723b1d53e50a5e7001ab1c"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-7",
+      "sha": "83ed72cc9f06d72ba1ee691473d35462a8bc0a104dbf4a95e8aec71b077eeff9"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-7",
+      "sha": "93eddd38daf57b2397e22e9a1c2c2fdca4b4ec1a40e1274e863f29b20a7d212e"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-8",
+      "sha": "a1816b933acf7dd3477f98444e4c078360ca7192fc92e8f4913d512791c32f00"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-8",
+      "sha": "f7ffcfc1156587a3fdeee4c1f273e899e7ec37094033d1d7f330b292a4cd37f9"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-9",
+      "sha": "8e2ccaad3536653897a06fa9b905c7bf05f6b181f232fe4e2c2c5a88009be508"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-9",
+      "sha": "6b2ddfff20fb0e36b7a5cedda017b55d8bc15c8c56debedb64546985136b8368"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-10",
+      "sha": "8c0c1199fa7b3f00484fd728da839da6d724977be7f7c33f2b6038b2ddd90d04"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-10",
+      "sha": "f6522140aa4a3d4dbadb745b5587e4173a4e44bac7a06897bf601cc8c31afc5c"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-11",
+      "sha": "2fc8056845f886a1858621fd4290ba29dfe43d43410c4a53307de579dbc200ca"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-11",
+      "sha": "6a77db620f37b40508fdd7ce698a6004370beed52092410d3ae582c2d3b68f0f"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-12",
+      "sha": "b2a9f4b5a0db8db92cb65b79b0dc117ee31caaccf1807370d072ac832363afa1"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-12",
+      "sha": "f254b009219be4aabe80448fedad52568465a2d0a1899f9fb07a2417fea8adea"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-13",
+      "sha": "a332ed935b953f11047694e8f803b0fb32c12ec4ddc8d183bfbe66307462f3b0"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-13",
+      "sha": "427e21506bfe0b4fd467337e76cbf040cbe0e100679547914d7fd6eab5296963"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-14",
+      "sha": "fb043189c0ec976c714af0ff90902e415318f9c507417b8078673c7c5921593b"
+    },
+    {
+      "kind": "blob",
+      "path": "implement/TASK-14",
+      "sha": "af7f5e6799089408971a2b828b1ca700341a404f6faa85c605cd65ebda5ccdd7"
+    },
+    {
+      "kind": "blob",
+      "path": "integrate",
+      "sha": "af7f5e6799089408971a2b828b1ca700341a404f6faa85c605cd65ebda5ccdd7"
+    },
+    {
+      "kind": "blob",
+      "path": "integrate",
+      "sha": "3384ecbe803348fb2e3c0a3f40c6cfd6f3865d42b93311c86f2a7c50141c3f5d"
+    },
+    {
+      "kind": "blob",
+      "path": "accept",
+      "sha": "ae5a9957dcdc5c4d74f590cdd42b12c92dfd833f04c795cd5a47bce9434d17eb"
+    },
+    {
+      "kind": "blob",
+      "path": "accept",
+      "sha": "aed437fac851ba69ff338730c9fee92086e0dcc133f417c59eb595c0b097a7aa"
+    },
+    {
+      "kind": "blob",
+      "path": "design-fidelity",
+      "sha": "c04f1bd420aef8a3aa566db7672a44ee01d4024a23dd2e99cbc08dcde35ee39b"
+    },
+    {
+      "kind": "blob",
+      "path": "design-check",
+      "sha": "6891815fb71b3fb6806ba65242effc73a4c1accb36995f9ad28e80ced91c369d"
+    },
+    {
+      "kind": "blob",
+      "path": "review",
+      "sha": "92fbb45ef388786ddc6d489634988508ccf7bb63b7539b32e7d6e7fc52cbf031"
+    }
+  ],
+  "locks": [
+    {
+      "file": "tests/acceptance.part1.test.tsx",
+      "sha": "e78823a4cd7e139172802a6f85ce2f5b8f4c3487bf83e62fb02d4ad64ca8da6e"
+    },
+    {
+      "file": "tests/acceptance.part2.test.tsx",
+      "sha": "2cb4560c89c42436238c9251b31445f078bb57b440916e6500632fc6a08ad159"
+    },
+    {
+      "file": "tests/acceptance.part3.test.tsx",
+      "sha": "a310ecf3b1614676c0bdc5c4a1cb8cbfabcd6533a0ca5c6120eb52dba7b8824d"
+    },
+    {
+      "file": "tests/acceptance.part4.test.tsx",
+      "sha": "902bfbc538a2622f4418993e9b8d14dec407b0499d43eee705dec10c24163555"
+    },
+    {
+      "file": "contracts/openapi.yaml",
+      "sha": "500618abd133dfacdbc2933365e74f93949e68da027cbf2bc666b5acac02e7de"
+    },
+    {
+      "file": "lib/api/client.msw.ts",
+      "sha": "7197e2785dc1682575ab3b8b80c77f614da2d189bbe3d3285d07377d0ae57242"
+    },
+    {
+      "file": "lib/api/client.schemas.ts",
+      "sha": "2c6da86c0d47a7b179b2baa72b5c38f68f63ad05e47c5b0cdd7261dc921cdcaa"
+    },
+    {
+      "file": "lib/api/client.ts",
+      "sha": "b3763fff2f21a2cdefa96ee3e785ebbed2fc3a131719b29fc1898f7583c6d076"
+    },
+    {
+      "file": "orval.config.cjs",
+      "sha": "83c558ee504c07f4f9ac0c2daed5b7cbc41197109a2d2268dbed0ba4a5c9db78"
+    }
+  ],
+  "approvals": [
+    {
+      "gate": "design-606f9b84",
+      "artifactSha": "606f9b8491bc3abfac8363da3d85848e367911f3bb72b64881729db32deecd83",
+      "osUser": "Hamza (via web)",
+      "gitIdentity": "mhamza",
+      "riskNote": "",
+      "at": "2026-10-21T17:14:52.600Z"
+    },
+    {
+      "gate": "approval-3e8ba9e7",
+      "artifactSha": "3e8ba9e7f7089f72eb1f01d7b040d6615ccca8525d6963fa94015baaae2f3111",
+      "osUser": "Hamza (via web)",
+      "gitIdentity": "mhamza",
+      "riskNote": "",
+      "at": "2026-10-21T17:14:52.600Z"
+    }
+  ],
+  "gatedTreeSha": "ed51c7960882c04788289eec15a14289d6503109",
+  "waivers": [],
+  "unlocks": [],
+  "configFingerprint": "cd7fc38797049bee7d790913283db3484bc565abcea366beb51ee7d02bea64b4",
+  "versions": {
+    "factory": "0.1.0",
+    "commit": "1302e8f",
+    "node": "v22.22.0",
+    "mode:brownfield": "1",
+    "mode:estimate": "1",
+    "mode:design": "1",
+    "@anthropic-ai/claude-agent-sdk": "0.3.283",
+    "@anthropic-ai/sdk": "0.128.0",
+    "openai": "7.23.0",
+    "zod": "4.6.5"
+  }
+}
