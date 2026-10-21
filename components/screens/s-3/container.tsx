@@ -110,29 +110,11 @@ function fieldLabel(field: string): string {
 }
 
 function GarageIllustration() {
-  return (
-    <div role="img" aria-label="Parking garage level with empty painted spaces" className="relative flex min-h-52 items-end overflow-hidden bg-secondary p-5 sm:min-h-60">
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-muted" />
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 flex h-1/2 items-center justify-around border-b border-border px-6">
-        <div className="h-8 w-1/4 border-x border-t border-border-strong" />
-        <div className="h-8 w-1/4 border-x border-t border-border-strong" />
-        <div className="h-8 w-1/4 border-x border-t border-border-strong" />
-      </div>
-      <div aria-hidden="true" className="relative z-10 grid w-full grid-cols-3 gap-3">
-        {[0, 1, 2].map((bay) => <div key={bay} className="flex h-20 items-center justify-center rounded-t-md border-x-2 border-t-2 border-dashed border-primary/40 bg-card/50 sm:h-24"><span className="text-xs font-medium text-muted-foreground">PARKING</span></div>)}
-      </div>
-    </div>
-  );
+  return <div role="img" aria-label="Parking garage level with empty painted spaces" className="relative min-h-52 overflow-hidden bg-secondary sm:min-h-60"><img src="/images/car-park-bays.jpg" alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover" /></div>;
 }
 
 function VehicleIllustration({ vehicle }: { vehicle?: Vehicle }) {
-  return (
-    <div role="img" aria-label={`${vehicle?.color ?? "Grey"} ${vehicle?.make ?? "Toyota"} ${vehicle?.model ?? "Corolla"}`} className="flex h-44 items-center justify-center bg-muted sm:h-48">
-      <div aria-hidden="true" className="flex h-32 w-4/5 items-center justify-center rounded-3xl border border-border-strong bg-card shadow-sm">
-        <CarFront className="size-20 stroke-1 text-secondary-foreground" />
-      </div>
-    </div>
-  );
+  return <div role="img" aria-label={`${vehicle?.color ?? "Grey"} ${vehicle?.make ?? "Toyota"} ${vehicle?.model ?? "Corolla"}`} className="relative h-44 overflow-hidden bg-muted sm:h-48"><img src="/images/car.jpg" alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover" /></div>;
 }
 
 function GarageSkeleton() {

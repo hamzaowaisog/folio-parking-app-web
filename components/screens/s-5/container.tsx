@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState, type FormEvent } from "react";
-import { Building2, CarFront, RefreshCw } from "lucide-react";
+import { Building2, RefreshCw } from "lucide-react";
 import { addMyVehicle, claimParkingSpace, getMyProfile, getParkingAvailability } from "@/lib/api/client";
 import type { Availability, EmployeeProfile, ParkingClaim, Vehicle } from "@/lib/api/client.schemas";
 import { getAccessToken } from "@/lib/auth/session";
@@ -80,32 +80,14 @@ function formatClaimableAt(timestamp: string): string {
 }
 
 function GarageIllustration({ full = false }: { full?: boolean }) {
-  return (
-    <div role="img" aria-label={full ? "Full car park" : "Car park level with empty painted bays"} className="relative flex min-h-52 items-end overflow-hidden bg-secondary p-5 sm:min-h-60">
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-muted" />
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 flex h-1/2 items-center justify-around border-b border-border px-6">
-        <div className="h-8 w-1/4 border-x border-t border-border-strong" />
-        <div className="h-8 w-1/4 border-x border-t border-border-strong" />
-        <div className="h-8 w-1/4 border-x border-t border-border-strong" />
-      </div>
-      <div aria-hidden="true" className="relative z-10 grid w-full grid-cols-3 gap-3">
-        {[0, 1, 2].map((bay) => (
-          <div key={bay} className="flex h-20 items-center justify-center rounded-t-md border-x-2 border-t-2 border-dashed border-primary/40 bg-card/50 sm:h-24">
-            {full ? <CarFront className="size-12 stroke-1 text-secondary-foreground" /> : <span className="text-xs font-medium text-muted-foreground">PARKING</span>}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  return <div role="img" aria-label={full ? "Full car park" : "Car park level with empty painted bays"} className="relative min-h-52 overflow-hidden bg-secondary sm:min-h-60"><img src={full ? "/images/car-park-bays.jpg" : "/images/car-park-entrance.jpg"} alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover" /></div>;
 }
 
 function VehicleIllustration({ vehicle }: { vehicle?: Vehicle }) {
   return (
-    <div role="img" aria-label={vehicle ? `${vehicle.color ?? ""} ${vehicle.make ?? ""} ${vehicle.model ?? "car"}`.trim() : "Car and empty license plate"} className="flex h-36 items-center justify-center rounded-md bg-muted">
-      <div aria-hidden="true" className="flex h-24 w-4/5 items-center justify-center gap-3 rounded-3xl border border-border-strong bg-card shadow-sm">
-        <CarFront className="size-14 stroke-1 text-secondary-foreground" />
-        <span className="flex h-7 min-w-16 items-center justify-center rounded border bg-muted px-2 font-mono text-xs font-medium">{vehicle?.plate ?? "PLATE"}</span>
-      </div>
+    <div role="img" aria-label={vehicle ? `${vehicle.color ?? ""} ${vehicle.make ?? ""} ${vehicle.model ?? "car"}`.trim() : "Car and empty license plate"} className="relative flex h-36 items-end overflow-hidden rounded-md bg-muted p-2">
+      <img src="/images/car.jpg" alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover" />
+      <span aria-hidden="true" className="relative flex h-7 min-w-16 items-center justify-center rounded border bg-card px-2 font-mono text-xs font-medium">{vehicle?.plate ?? "PLATE"}</span>
     </div>
   );
 }

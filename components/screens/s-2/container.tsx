@@ -65,19 +65,8 @@ export function CreateAnAccountContainer({ fixture }: { fixture?: string }) {
 
   return (
     <main data-screen="S-2" data-state={fixture ?? (success ? "success" : "default")} className="flex min-h-dvh w-full flex-col md:flex-row">
-      <div role="img" aria-label="Illustration of a parking garage" className="relative h-44 shrink-0 overflow-hidden bg-muted sm:h-56 md:h-dvh md:w-1/2">
-        <div aria-hidden="true" className="absolute inset-0 flex flex-col justify-end gap-3 bg-gradient-to-b from-muted to-secondary p-6 sm:p-10">
-          <div className="flex items-end justify-center gap-3">
-            <div className="h-16 flex-1 rounded-t-md border-2 border-dashed border-primary/30 bg-card/60" />
-            <div className="relative flex h-16 flex-1 items-center justify-center rounded-t-md border-2 border-dashed border-primary/30 bg-card/60">
-              <div className="flex h-8 w-24 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <span className="h-3 w-14 rounded-full bg-primary-foreground/80" />
-              </div>
-            </div>
-            <div className="h-16 flex-1 rounded-t-md border-2 border-dashed border-primary/30 bg-card/60" />
-          </div>
-          <div className="h-5 rounded-sm bg-secondary" />
-        </div>
+      <div role="img" aria-label="Office car park" className="relative h-44 shrink-0 overflow-hidden bg-muted sm:h-56 md:h-dvh md:w-1/2">
+        <img src="/images/car-park-ramp.jpg" alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover" />
       </div>
 
       <section className="flex flex-1 flex-col items-center justify-center p-6 sm:p-8 md:w-1/2 md:p-12">

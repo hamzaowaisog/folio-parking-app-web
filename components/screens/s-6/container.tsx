@@ -89,10 +89,8 @@ function VehicleCard({ vehicle, index }: { vehicle: Vehicle; index: number }) {
   const values = [vehicle.make, vehicle.model, vehicle.color].filter((value): value is string => Boolean(value));
   return (
     <Card className="overflow-hidden">
-      <div role="img" aria-label={`${vehicle.color ?? ""} ${vehicle.make ?? ""} ${vehicle.model ?? ""}`.trim() || "Registered vehicle"} className="flex aspect-video items-center justify-center bg-muted">
-        <div aria-hidden="true" className="flex size-24 items-center justify-center rounded-full border bg-card text-secondary-foreground">
-          <CarFront className="size-14 stroke-1" />
-        </div>
+      <div role="img" aria-label={`${vehicle.color ?? ""} ${vehicle.make ?? ""} ${vehicle.model ?? ""}`.trim() || "Registered vehicle"} className="relative aspect-video overflow-hidden bg-muted">
+        <img src="/images/car.jpg" alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover" />
       </div>
       <div className="flex items-center justify-between gap-3 p-5">
         <div className="min-w-0">

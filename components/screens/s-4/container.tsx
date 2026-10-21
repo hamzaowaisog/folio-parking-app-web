@@ -203,14 +203,7 @@ function CalendarSkeleton() {
 }
 
 function EmptyBayIllustration() {
-  return (
-    <div role="img" aria-label="An empty parking bay" className="relative flex min-h-52 items-end overflow-hidden bg-muted p-5 sm:min-h-60">
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 border-b border-border bg-secondary" />
-      <div aria-hidden="true" className="relative z-10 mx-auto flex h-24 w-2/3 items-center justify-center rounded-t-md border-x-2 border-t-2 border-dashed border-primary/40 bg-card/50">
-        <span className="text-sm font-medium text-muted-foreground">PARKING</span>
-      </div>
-    </div>
-  );
+  return <div role="img" aria-label="An empty parking bay" className="relative min-h-52 overflow-hidden bg-muted sm:min-h-60"><img src="/images/empty-bay.jpg" alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover" /></div>;
 }
 
 export function MySpaceContainer({ fixture }: { fixture?: string }) {
